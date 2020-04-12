@@ -5,14 +5,22 @@ class Form extends Component {
     constructor(){
         super()
         this.state={
+            total: '',
+            
+            mounth: [ 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January', 'February', 'March'],
+            year: [ '2020', '2021', '2022', '2023', '2024', '2025' ],           
             countM: 0,
             countY: 0,
-            mounth: [ 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January', 'February', 'March'],
-            year: [ '2020', '2021', '2022', '2023', '2024', '2025' ],
+
+            calcM: '',
+
+            calcTotal: '0',
         }
         this.add = this.add.bind(this)
         this.remove = this.remove.bind(this)
+        this.calcParc = this.calcParc.bind(this)
     }
+
 
     add(){
         let state = this.state
@@ -24,6 +32,7 @@ class Form extends Component {
         } else {
             state.countM = 0
         }
+        this.calcParc()
         
         this.setState(state)
     }
@@ -38,7 +47,21 @@ class Form extends Component {
         } else if (state.countY > 0) {
             state.countM = 11
         }
-        
+        this.calcParc()
+
+        this.setState(state)
+    }
+
+    calcParc() {
+        let state = this.state
+
+        state.calcM = (state.countY * 12) + (state.countM) + 1
+
+        state.calcTotal = state.calcTotal = state.total / state.calcM
+
+        state.calcTotal = parseFloat(state.calcTotal.toFixed(2))
+        state.calcTotal = state.calcTotal.toLocaleString('en-US')
+
         this.setState(state)
     }
 
@@ -55,7 +78,7 @@ class Form extends Component {
                             <div className='row'>
                                 <div id='amount' className='col s12'>
                                     <span className="material-icons icon_amount">attach_money</span>
-                                    <input id="amount_form" className='validate' type='number'></input>
+                                    <input id="amount_form" className='validate' type='number' value={this.state.total} onChange={(evento) => this.setState({total: evento.target.value})} placeholder='25000.00'></input>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +101,7 @@ class Form extends Component {
                                     </div>
                                 </div>
                                 <div className='col s1'>
-                                    <button onClick={this.add} className='arrow_mounth center-align'>
+                                    <button onClick={this.add}  className='arrow_mounth center-align'>
                                     <span className="material-icons arrow_mounth">chevron_right</span>
                                     </button>
                                 </div>
@@ -87,9 +110,9 @@ class Form extends Component {
                     </div>
                 </div>
             </div>         
-            <Result/>
+            <Result result={this.state.calcTotal} countM={this.state.calcM} total={this.state.total} mounth={this.state.mounth[this.state.countM]} year={this.state.year[this.state.countY]}/>
             <div className='row center-align'>
-                    <button id='btn_confirm' className='col s12 btn btn-large'><b>Confirm</b></button>
+                    <button onClick={this.calcParc} id='btn_confirm' className='col s12 btn btn-large'><b>Confirm</b></button>
             </div>
         </div>
         )

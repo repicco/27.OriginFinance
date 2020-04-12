@@ -1,12 +1,13 @@
 import * as React from 'react';
-import Header from './components/header/header'
-import Form from './components/form/form'
+import Main from './main'
+
+
+
 
 const App: React.FunctionComponent = () => {
   return (
   <div className='container'>
-    <Header/>
-    <Form/>
+    <Main/>
   </div>
   
   )

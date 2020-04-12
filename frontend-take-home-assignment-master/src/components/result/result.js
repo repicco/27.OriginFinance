@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Result() {
+function Result(props) {
 
     return (
         <div>
@@ -10,12 +10,12 @@ function Result() {
                 </div>
                 <div className='mob col s5 offset-s1'>
                     <span className="material-icons main_result">attach_money</span>
-                    <span className='main_result main_number'><b>521</b></span>
+                    <span className='main_result main_number'><b>{props.result}</b></span>
                 </div>
             </div>
             <div className='row'>
                 <div className='col s12 text_result'>
-                    <p>You're plannig <b>x monthly deposits</b> to reach your <b>$xx,xxx.xx</b> goal by <b>x.Mounth 2020.</b></p>
+                    <p>You're plannig <b>{props.countM} monthly deposits</b> to reach your <b>${props.total}</b> goal by <b>{props.mounth} {props.year}.</b></p>
                 </div>
             </div>
         </div>
