@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Header from './components/header/header'
-import Form, { add, remove } from './components/form/form'
+import Form from './components/form/form'
 
 class Main extends Component {
     render(){

@@ -97,17 +97,17 @@ h1, h5, h6 {
 }
 
 
-@media (max-width: 650px) {
+@media (max-width: 940px) {
     .desk {
         display: none;
     }
 
     .main_result{
-        font-size: 3rem;
+        font-size: 2.2rem;
     }
 
     .main_number {
-        font-size: 4rem;
+        font-size: 2.5rem;
     }
 
     .text_result {
@@ -115,13 +115,17 @@ h1, h5, h6 {
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
     .main_result{
-        font-size: 2.5rem;
+        font-size: 1.4rem;
+    }
+
+    .monthly_result{
+        font-size: 1.4rem;
     }
 
     .main_number {
-        font-size: 3rem;
+        font-size: 1.7rem;
     }
 
     .text_result {

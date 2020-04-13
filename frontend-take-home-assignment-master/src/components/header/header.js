@@ -1,5 +1,4 @@
 import React from 'react'
-import Logo from '../../icons/home.jpg'
 
 function Header() {
     return (
