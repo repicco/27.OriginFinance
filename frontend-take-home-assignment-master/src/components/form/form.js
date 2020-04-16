@@ -6,6 +6,7 @@ class Form extends Component {
         super()
         this.state={
             total: '',
+            totalF: '',
             
             mounth: [ 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January', 'February', 'March'],
             year: [ '2020', '2021', '2022', '2023', '2024', '2025' ],           
@@ -57,10 +58,14 @@ class Form extends Component {
 
         state.calcM = (state.countY * 12) + (state.countM) + 1
 
-        state.calcTotal = state.calcTotal = state.total / state.calcM
+        state.calcTotal = state.total / state.calcM
 
         state.calcTotal = parseFloat(state.calcTotal.toFixed(2))
         state.calcTotal = state.calcTotal.toLocaleString('en-US')
+        
+        state.totalF = state.total
+        state.totalF = parseFloat(state.totalF)
+        state.totalF = state.totalF.toLocaleString('en-US')
 
         this.setState(state)
     }
@@ -110,7 +115,7 @@ class Form extends Component {
                     </div>
                 </div>
             </div>         
-            <Result result={this.state.calcTotal} countM={this.state.calcM} total={this.state.total} mounth={this.state.mounth[this.state.countM]} year={this.state.year[this.state.countY]}/>
+            <Result result={this.state.calcTotal} countM={this.state.calcM} total={this.state.totalF} mounth={this.state.mounth[this.state.countM]} year={this.state.year[this.state.countY]}/>
             <div className='row center-align'>
                     <button onClick={this.calcParc} id='btn_confirm' className='col s12 btn btn-large'><b>Confirm</b></button>
             </div>
