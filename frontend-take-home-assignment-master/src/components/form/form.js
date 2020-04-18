@@ -13,7 +13,7 @@ class Form extends Component {
             countM: 0,
             countY: 0,
 
-            calcM: '',
+            calcM: 1,
 
             calcTotal: '0',
         }
@@ -30,8 +30,10 @@ class Form extends Component {
                 state.countY ++
             }
             state.countM ++
+            state.calcM ++
         } else {
             state.countM = 0
+            state.calcM ++
         }
         this.calcParc()
         
@@ -45,8 +47,10 @@ class Form extends Component {
                 state.countY --
             }
             state.countM --
+            state.calcM --
         } else if (state.countY > 0) {
             state.countM = 11
+            state.calcM --
         }
         this.calcParc()
 
@@ -55,8 +59,6 @@ class Form extends Component {
 
     calcParc() {
         let state = this.state
-
-        state.calcM = (state.countY * 12) + (state.countM) + 1
 
         state.calcTotal = state.total / state.calcM
 
