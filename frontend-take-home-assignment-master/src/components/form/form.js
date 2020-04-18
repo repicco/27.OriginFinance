@@ -41,7 +41,7 @@ class Form extends Component {
     remove(){
         let state = this.state
         if(state.countM > 0) {
-            if (state.countM == 8 && state.countY > 0){
+            if (state.countM == 9 && state.countY > 0){
                 state.countY --
             }
             state.countM --
