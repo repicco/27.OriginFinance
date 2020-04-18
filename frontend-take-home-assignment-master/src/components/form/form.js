@@ -9,7 +9,7 @@ class Form extends Component {
             totalF: '',
             
             mounth: [ 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January', 'February', 'March'],
-            year: [ '2020', '2021', '2022', '2023', '2024', '2025' ],           
+            year: [ '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035', '2036', '2037', '2038', '2039', '2040', '2041', '2042', '2043', '2044', '2045', '2046', '2047', '2048', '2049', '2050' ],           
             countM: 0,
             countY: 0,
 
@@ -25,8 +25,8 @@ class Form extends Component {
 
     add(){
         let state = this.state
-        if(state.countM < 11) {
-            if (state.countM == 8 && state.countY < 5){
+        if(state.countM < 11 && state.countY < 30) {
+            if (state.countM == 8 ){
                 state.countY ++
             }
             state.countM ++
