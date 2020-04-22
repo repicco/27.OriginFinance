@@ -20,6 +20,7 @@ class Form extends Component {
         this.add = this.add.bind(this)
         this.remove = this.remove.bind(this)
         this.calcParc = this.calcParc.bind(this)
+        this.recebeMoeda = this.recebeMoeda.bind(this)
     }
 
 
@@ -72,6 +73,17 @@ class Form extends Component {
         this.setState(state)
     }
 
+    recebeMoeda(event){
+        let state = this.state
+
+        state.total = event.target.value
+
+        state.total = state.total.replace(',','')
+        state.total = parseFloat(state.total)
+
+        this.setState(state)
+    }
+
     render(){
         return(
             <div>     
@@ -85,7 +97,7 @@ class Form extends Component {
                             <div className='row'>
                                 <div id='amount' className='col s12'>
                                     <span className="material-icons icon_amount">attach_money</span>
-                                    <input id="amount_form" className='validate' type='number' value={this.state.total} onChange={(evento) => this.setState({total: evento.target.value})} placeholder='25000.00'></input>
+                                    <input id="amount_form" className='validate' type='text' value={this.state.total} onChange={this.recebeMoeda} placeholder='25000'></input>
                                 </div>
                             </div>
                         </div>
