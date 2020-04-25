@@ -15,7 +15,7 @@ function Result(props) {
             </div>
             <div className='row'>
                 <div className='col s12 text_result'>
-                    <p>You're plannig <b>{props.countM} monthly deposits</b> to reach your <b>${props.total}</b> goal by <b>{props.mounth} {props.year}.</b> (Max: April/2050)</p>
+                    <p>You're plannig <b>{props.countM} monthly deposits</b> to reach your <b>{props.total}</b> goal by <b>{props.mounth} {props.year}.</b> (Max: April/2050)</p>
                 </div>
             </div>
         </div>

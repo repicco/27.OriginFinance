@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import Result from '../result/result'
+import CurrencyInput from '../currencyinput'
 
 class Form extends Component {
     constructor(){
         super()
         this.state={
             total: '',
-            totalF: '',
+            totalResult: '',
             
             mounth: [ 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January', 'February', 'March'],
             year: [ '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035', '2036', '2037', '2038', '2039', '2040', '2041', '2042', '2043', '2044', '2045', '2046', '2047', '2048', '2049', '2050' ],           
@@ -61,14 +62,12 @@ class Form extends Component {
     calcParc() {
         let state = this.state
 
+        state.total = parseFloat(state.total)
+        console.log(state.total)
         state.calcTotal = state.total / state.calcM
-
+        
         state.calcTotal = parseFloat(state.calcTotal.toFixed(2))
         state.calcTotal = state.calcTotal.toLocaleString('en-US')
-        
-        state.totalF = state.total
-        state.totalF = parseFloat(state.totalF)
-        state.totalF = state.totalF.toLocaleString('en-US')
 
         this.setState(state)
     }
@@ -78,8 +77,13 @@ class Form extends Component {
 
         state.total = event.target.value
 
+        state.totalResult = state.total
+
         state.total = state.total.replace(',','')
-        state.total = parseFloat(state.total)
+        state.total = state.total.replace(',','')
+        state.total = state.total.replace('$','')
+        //state.total = parseFloat(state.total)
+
 
         this.setState(state)
     }
@@ -96,8 +100,7 @@ class Form extends Component {
                             </div>
                             <div className='row'>
                                 <div id='amount' className='col s12'>
-                                    <span className="material-icons icon_amount">attach_money</span>
-                                    <input id="amount_form" className='validate' type='text' value={this.state.total} onChange={this.recebeMoeda} placeholder='25000'></input>
+                                    <CurrencyInput id="amount_form" placeholder="0.00" type='text' value={this.state.total} onChange={this.recebeMoeda} />
                                 </div>
                             </div>
                         </div>
@@ -129,7 +132,7 @@ class Form extends Component {
                     </div>
                 </div>
             </div>         
-            <Result result={this.state.calcTotal} countM={this.state.calcM} total={this.state.totalF} mounth={this.state.mounth[this.state.countM]} year={this.state.year[this.state.countY]}/>
+            <Result result={this.state.calcTotal} countM={this.state.calcM} total={this.state.totalResult} mounth={this.state.mounth[this.state.countM]} year={this.state.year[this.state.countY]}/>
             <div className='row center-align'>
                     <button onClick={this.calcParc} id='btn_confirm' className='col s12 btn btn-large'><b>Confirm</b></button>
             </div>
